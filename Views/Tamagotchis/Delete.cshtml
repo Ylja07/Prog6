@@ -1,0 +1,88 @@
+﻿@model Prog6.Models.Tamagotchi
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tamagotchi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Money)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Money)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Health)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Health)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Boredom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boredom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room1.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room1.Type)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

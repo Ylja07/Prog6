@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Prog6.Models.Room>
+
+@{
+    ViewBag.Title = "Booking";
+}
+<table class="table">
+    <tr>
+        <th>
+            Type vrije kamer
+        </th>
+        <th>
+            Aantal plaatsen
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Tamagotchi.Count == 0)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type) (#@Html.DisplayFor(modelItem => item.Id))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.ActionLink("Plaats boekingen", "Book", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
