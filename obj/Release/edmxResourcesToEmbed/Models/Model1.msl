@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TamagotchiModelStoreContainer" CdmEntityContainer="TamagotchiEntities">
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="TamagotchiModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tamagotchi">
+      <EntityTypeMapping TypeName="TamagotchiModel.Tamagotchi">
+        <MappingFragment StoreEntitySet="Tamagotchi">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Health" ColumnName="Health" />
+          <ScalarProperty Name="Boredom" ColumnName="Boredom" />
+          <ScalarProperty Name="Alive" ColumnName="Alive" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

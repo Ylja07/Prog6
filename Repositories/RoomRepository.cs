@@ -72,6 +72,7 @@ namespace Prog6.Repositories
                 }
                 _tamagotchiEntities.Entry(t).State = EntityState.Modified;
             }
+            r.Tamagotchi.Clear();
             _tamagotchiEntities.SaveChanges();
             Fight(fightingTama);
         }

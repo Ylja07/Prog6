@@ -43,7 +43,7 @@ namespace Prog6.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Book([Bind(Include = "Room,Tamagotchis")] BookingViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && viewModel.Tamagotchis.Count() <= viewModel.Room.Size)
             {
                 foreach (string i in viewModel.Tamagotchis)
                 {
@@ -55,18 +55,24 @@ namespace Prog6.Controllers
                 _roomRepository.Update(viewModel.Room);
                 return RedirectToAction("Index");
             }
-            IEnumerable<SelectListItem> basetypes = _tamagotchiRepository.GetAll().Select(
+            IEnumerable<SelectListItem> basetypes = _tamagotchiRepository.GetAll().Where(e => e.Alive && e.Room == null && e.Money >= _roomRepository.Get(viewModel.Room.Id).Cost).Select(
                 b => new SelectListItem { Value = b.Id.ToString(), Text = b.Name });
             ViewData["tamagotchis"] = basetypes;
-            return View();
+            return View(viewModel);
         }
         public ActionResult Booking()
         {
-            return View(_roomRepository.GetAll());
+            return View(_roomRepository.GetAll().Where(e => e.Size != e.Tamagotchi.Count));
         }
 
         public ActionResult PerformNight()
         {
+            var outsidetama = _tamagotchiRepository.GetAll().Where(e => e.Room == null);
+            foreach (Tamagotchi t in outsidetama)
+            {
+                t.Health -= 20;
+                t.Boredom += 20;
+            }
             var rooms = _roomRepository.GetAll();
             foreach (Room r in rooms)
             {
